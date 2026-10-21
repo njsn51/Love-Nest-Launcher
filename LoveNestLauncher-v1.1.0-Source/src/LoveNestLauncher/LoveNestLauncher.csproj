@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>LoveNestLauncher</RootNamespace>
+    <AssemblyName>LoveNestLauncher</AssemblyName>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <Authors>小茗白茶QWQ, Drunk耀爵, 青音连旭</Authors>
+    <Company>小茗白茶QWQ</Company>
+    <Product>Love Nest Launcher</Product>
+    <AssemblyTitle>Love Nest Launcher</AssemblyTitle>
+    <Description>爱之巢下载启动器</Description>
+    <Copyright>Copyright © 2026 小茗白茶QWQ</Copyright>
+    <NeutralLanguage>zh-Hans</NeutralLanguage>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <SatelliteResourceLanguages>zh-Hans</SatelliteResourceLanguages>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\download-sources.txt" LogicalName="LoveNestLauncher.download-sources.txt" />
+    <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\app.png" />
+  </ItemGroup>
+
+</Project>

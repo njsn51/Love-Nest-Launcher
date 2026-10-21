@@ -1,0 +1,138 @@
+<UserControl x:Class="LoveNestLauncher.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignWidth="900"
+             d:DesignHeight="650">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="28,22,28,26">
+
+            <TextBlock Text="主页" Style="{StaticResource PageTitleText}" />
+            <TextBlock Text="下载、解压，然后开始游戏。" Style="{StaticResource PageSubtitleText}" Margin="0,4,0,0" />
+
+            <Border Style="{StaticResource CardStyle}" Padding="22" Margin="0,20,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="68" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Width="58" Height="58" CornerRadius="14" Background="{StaticResource AccentSoftBrush}"
+                            VerticalAlignment="Top">
+                        <Image Source="/Assets/app.png" Width="58" Height="58" Stretch="Uniform"
+                               RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    </Border>
+
+                    <StackPanel Grid.Column="1" Margin="4,0,18,0">
+                        <TextBlock Text="爱之巢" FontSize="21" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal" Margin="0,7,0,0">
+                            <Border Width="6" Height="6" CornerRadius="3" Background="{Binding GameStatusBrush}"
+                                    VerticalAlignment="Center" />
+                            <TextBlock Text="{Binding GameStatusText}" FontSize="11"
+                                       Foreground="{Binding GameStatusBrush}" Margin="6,0,0,0" />
+                        </StackPanel>
+                        <TextBlock Text="{Binding GameExecutableDisplay}" FontSize="10.5"
+                                   Foreground="{StaticResource TextMutedBrush}" Margin="0,4,0,0"
+                                   TextTrimming="CharacterEllipsis" ToolTip="{Binding GameExecutableTooltip}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                        <Button Style="{StaticResource PrimaryButtonStyle}" Width="132" Height="40"
+                                AutomationProperties.Name="{Binding GameButtonText}"
+                                Command="{Binding GamePrimaryActionCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE768;" FontFamily="{StaticResource IconFont}" FontSize="11"
+                                           Foreground="White" Margin="0,0,7,0" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding GameButtonText}" Foreground="White" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
+                            <Button Style="{StaticResource GhostButtonStyle}" Content="选择程序" FontSize="10.5"
+                                    Padding="6,4" Command="{Binding SelectGameExecutableCommand}" />
+                            <TextBlock Text="·" FontSize="10" Foreground="{StaticResource TextMutedBrush}"
+                                       VerticalAlignment="Center" Margin="2,0" />
+                            <Button Style="{StaticResource GhostButtonStyle}" Content="自动查找" FontSize="10.5"
+                                    Padding="6,4" Command="{Binding AutoDetectGameCommand}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Grid Margin="0,12,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Style="{StaticResource CardStyle}" Padding="18" Margin="0,0,6,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <TextBlock Text="下载中心" Style="{StaticResource SectionTitleText}" />
+                            <TextBlock Text="&#xE896;" FontFamily="{StaticResource IconFont}" FontSize="12"
+                                       Foreground="{StaticResource AccentDeepBrush}" HorizontalAlignment="Right" />
+                        </Grid>
+                        <StackPanel Grid.Row="1" Margin="0,10,0,9">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Versions.Count}" FontSize="24" FontWeight="Bold" />
+                                <TextBlock Text=" 个版本" FontSize="10.5" Foreground="{StaticResource TextMutedBrush}"
+                                           VerticalAlignment="Bottom" Margin="0,0,0,4" />
+                            </StackPanel>
+                            <TextBlock Text="{Binding ActiveDownloadSummary}" Style="{StaticResource CaptionText}"
+                                       Margin="0,2,0,0" />
+                        </StackPanel>
+                        <Button Grid.Row="2" Style="{StaticResource SoftButtonStyle}" Content="浏览版本" Padding="12,6"
+                                FontSize="11" HorizontalAlignment="Left" Command="{Binding NavigateCommand}"
+                                CommandParameter="1" />
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1" Style="{StaticResource CardStyle}" Padding="18" Margin="6,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <TextBlock Text="下载位置" Style="{StaticResource SectionTitleText}" />
+                            <TextBlock Text="&#xE838;" FontFamily="{StaticResource IconFont}" FontSize="12"
+                                       Foreground="{StaticResource TextMutedBrush}" HorizontalAlignment="Right" />
+                        </Grid>
+                        <TextBlock Grid.Row="1" Text="{Binding SavedDownloadDirectoryDisplay}"
+                                   FontSize="11" Foreground="{StaticResource TextSecondaryBrush}"
+                                   Margin="0,11,0,9" TextTrimming="CharacterEllipsis"
+                                   ToolTip="{Binding SavedDownloadDirectory}" />
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <Button Style="{StaticResource SoftButtonStyle}" Content="打开" Padding="12,6" FontSize="11"
+                                    Command="{Binding OpenDownloadFolderCommand}" />
+                            <Button Style="{StaticResource GhostButtonStyle}" Content="设置" Padding="10,6" FontSize="11"
+                                    Margin="4,0,0,0" Command="{Binding NavigateCommand}" CommandParameter="2" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid Margin="0,16,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xE73E;" FontFamily="{StaticResource IconFont}" FontSize="10"
+                               Foreground="{StaticResource SuccessBrush}" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding AutoExtractHint}" FontSize="10" Foreground="{StaticResource TextMutedBrush}"
+                               Margin="5,0,0,0" />
+                    <TextBlock Text="·" FontSize="10" Foreground="{StaticResource TextMutedBrush}" Margin="7,0" />
+                    <TextBlock Text="同时只允许运行一个爱之巢实例" FontSize="10"
+                               Foreground="{StaticResource TextMutedBrush}" />
+                </StackPanel>
+                <TextBlock Text="下载源由 青音连旭 提供" HorizontalAlignment="Right" Style="{StaticResource CaptionText}" />
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

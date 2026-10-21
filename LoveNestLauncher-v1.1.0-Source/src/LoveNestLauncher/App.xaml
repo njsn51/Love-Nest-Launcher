@@ -1,0 +1,19 @@
+<Application x:Class="LoveNestLauncher.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:common="clr-namespace:LoveNestLauncher.Common"
+             ShutdownMode="OnMainWindowClose">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Theme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <common:BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+            <common:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVisibility" />
+            <common:InverseBooleanConverter x:Key="InverseBool" />
+            <common:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibility" />
+            <common:NullToVisibilityConverter x:Key="NullToVisibility" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
